@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "hm:blocks/log_aluminium_top",
+        "side": "hm:blocks/log_aluminium"
+    }
+}

@@ -1,0 +1,23 @@
+itemGroup.harry_tab=Harry Mod
+
+tile.planks_copper.name=Copper Infused Planks
+tile.planks_aluminium.name=Aluminium Infused Planks
+
+tile.log_copper.name=Copper Infused Log
+tile.log_aluminium.name=Aluminium Infused Log
+
+tile.leaves_copper.name=Copper Infused Leaves
+tile.leaves_aluminium.name=Aluminium Infused Leaves
+
+tile.sapling_copper.name=Copper Infused Sapling
+tile.sapling_aluminium.name=Aluminium Infused Sapling
+
+tile.dirt_copper.name=Copper Infused Dirt
+tile.dirt_aluminium.name=Aluminium Infused Dirt
+
+tile.grass_copper.name=Copper Infused Grass
+tile.grass_aluminium.name=Aluminium Infused Grass
+
+tile.ore_copper.name=Copper Ore
+tile.ore_aluminium.name=Aluminium Ore
+

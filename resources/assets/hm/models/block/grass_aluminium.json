@@ -1,0 +1,10 @@
+{
+     "parent": "block/grass",
+    "textures": {
+        "particle": "hm:blocks/dirt_aluminium",
+        "bottom": "hm:blocks/dirt_aluminium",
+        "top": "hm:blocks/grass_aluminium_top",
+        "side": "hm:blocks/grass_aluminium_side",
+        "overlay": "hm:blocks/grass_aluminium_side"
+    }
+}

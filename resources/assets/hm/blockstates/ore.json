@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "variant=copper": { "model": "hm:ore_copper" },
+        "variant=aluminium": { "model": "hm:ore_aluminium" }
+    }
+}

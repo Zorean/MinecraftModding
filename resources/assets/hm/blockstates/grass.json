@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "variant=copper": { "model": "hm:grass_copper" },
+        "variant=aluminium": { "model": "hm:grass_aluminium" }
+    }
+}

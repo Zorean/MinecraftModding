@@ -14,4 +14,5 @@ public class Reference
 	public static Logger logger = LogManager.getLogger(Reference.MODID);
 	
 	public static final int copper_id = 46;
+	public static final int copper_dim_id = 740;
 }

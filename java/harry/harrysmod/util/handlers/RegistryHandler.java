@@ -2,9 +2,11 @@ package harry.harrysmod.util.handlers;
 
 import harry.harrysmod.init.BiomeInit;
 import harry.harrysmod.init.BlockInit;
-import harry.harrysmod.world.feature.tree.CopperTree;
+import harry.harrysmod.init.DimensionInit;
+import harry.harrysmod.util.Reference;
+import harry.harrysmod.world.dimension.WorldProviderCopper;
 import harry.harrysmod.world.feature.tree.TreeGeneration;
-import net.minecraftforge.fml.common.IWorldGenerator;
+import net.minecraft.world.DimensionType;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class RegistryHandler 
@@ -24,5 +26,7 @@ public class RegistryHandler
 		BiomeInit.register();
 		
 		GameRegistry.registerWorldGenerator(new TreeGeneration(), 0);
+		DimensionInit.register();
+		
 	}
 }

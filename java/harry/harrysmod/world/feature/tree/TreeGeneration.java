@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+import harry.harrysmod.world.biome.BiomeCopper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomePlains;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class TreeGeneration implements IWorldGenerator
 {
-	private final WorldGenerator gen_copper_tree = new CopperTree(5);
+	private final WorldGenerator gen_copper_tree = new CopperTree();
 	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) 
@@ -28,7 +28,7 @@ public class TreeGeneration implements IWorldGenerator
 			
 		case 0:
 			
-			runGenerator(gen_copper_tree, world, random, chunkX, chunkZ, 1, -1, 0, BiomePlains.class);
+			runGenerator(gen_copper_tree, world, random, chunkX, chunkZ, 1, -1, 0, BiomeCopper.class);
 			
 			break;
 			

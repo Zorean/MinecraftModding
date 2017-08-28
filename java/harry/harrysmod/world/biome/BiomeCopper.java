@@ -1,57 +1,63 @@
 package harry.harrysmod.world.biome;
 
+import java.util.Random;
+import java.util.logging.Logger;
+
 import harry.harrysmod.blocks.CustomBlockDirt;
-import harry.harrysmod.blocks.CustomBlockOre;
 import harry.harrysmod.blocks.CustomBlockPlanks;
+import harry.harrysmod.blocks.CustomBlockSapling;
 import harry.harrysmod.init.BlockInit;
+import harry.harrysmod.util.Reference;
+import harry.harrysmod.world.feature.tree.CopperTree;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.passive.EntityLlama;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraft.world.chunk.ChunkPrimer;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
-public class BiomeCopper extends Biome 
+public class BiomeCopper extends Biome
 {
-	private static final IBlockState DIRT = BlockInit.dirt.getDefaultState().withProperty(CustomBlockDirt.VARIANT, CustomBlockPlanks.EnumType.COPPER);
-	private static final IBlockState ORE = BlockInit.ore.getDefaultState().withProperty(CustomBlockOre.VARIANT, CustomBlockPlanks.EnumType.COPPER);
+	protected static final CopperTree TREE = new CopperTree();
+	protected static final IBlockState DIRT = BlockInit.dirt.getDefaultState().withProperty(CustomBlockDirt.VARIANT, CustomBlockPlanks.EnumType.COPPER);
 	
-	public BiomeCopper(BiomeProperties properties) 
+	public BiomeCopper()
 	{
-		super(properties);
-		properties.setBaseHeight(0.5F);
-		properties.setHeightVariation(0.25F);
-		properties.setTemperature(1.0F);
-		properties.setRainDisabled();
-		properties.setWaterColor(16753920);
-		
+		super(new BiomeProperties("Copper").setTemperature(1.0F).setBaseHeight(4.0F).setHeightVariation(0.6F).setRainDisabled().setWaterColor(2551650));
 		this.topBlock = DIRT;
-		this.fillerBlock = DIRT;		
-		this.decorator.dirtGen = new WorldGenMinable(DIRT, 16);
-		this.decorator.sandGen = new WorldGenMinable(DIRT, 16);
-		
-		this.decorator.coalGen = new WorldGenMinable(ORE, 16);
-		this.decorator.diamondGen = new WorldGenMinable(ORE, 16);
-		this.decorator.goldGen = new WorldGenMinable(ORE, 16);
-		this.decorator.ironGen = new WorldGenMinable(ORE, 16);
-		this.decorator.lapisGen = new WorldGenMinable(ORE, 16);
-		this.decorator.redstoneGen = new WorldGenMinable(ORE, 16);
-		
-		this.decorator.bigMushroomsPerChunk = 0;
-		this.decorator.cactiPerChunk = 0;
-		this.decorator.clayPerChunk = 0;
-		this.decorator.waterlilyPerChunk = 0;
-		this.decorator.flowersPerChunk = 0;
-		this.decorator.treesPerChunk = 0;
-		this.decorator.sandPatchesPerChunk = 0;
-		
-		this.spawnableCaveCreatureList.clear();
+		this.fillerBlock = DIRT;
 		this.spawnableCreatureList.clear();
 		this.spawnableMonsterList.clear();
-		this.spawnableWaterCreatureList.clear();
-		this.spawnableCreatureList.add(new SpawnListEntry(EntityIronGolem.class, 100, 1, 20));
-		this.spawnableCreatureList.add(new SpawnListEntry(EntityPolarBear.class, 60, 1, 10));
-		this.spawnableCreatureList.add(new SpawnListEntry(EntityLlama.class, 80, 1, 10));
+		this.spawnableCaveCreatureList.clear();
+		
+		this.spawnableCreatureList.add(new SpawnListEntry(EntityLlama.class, 10, 1, 10));
+		this.spawnableCreatureList.add(new SpawnListEntry(EntityPolarBear.class, 5, 1, 3));
+	}
+	
+	@Override
+	public int getSkyColorByTemp(float currentTemperature) 
+	{
+		return 2551650;
 	}
 
+	@Override
+	public WorldGenAbstractTree getRandomTreeFeature(Random rand) 
+	{
+		return TREE;
+	}
+
+	@Override
+	public void genTerrainBlocks(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal) 
+	{
+		this.generateBiomeTerrain(worldIn, rand, chunkPrimerIn, x, z, noiseVal);
+	}
+	
+	@Override
+	public void decorate(World worldIn, Random rand, BlockPos pos) 
+	{
+		super.decorate(worldIn, rand, pos);
+		Logger.getLogger(Reference.MODID).config(pos.toString());
+	}
 }

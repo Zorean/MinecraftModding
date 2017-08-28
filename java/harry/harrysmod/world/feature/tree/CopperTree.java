@@ -2,30 +2,37 @@ package harry.harrysmod.world.feature.tree;
 
 import java.util.Random;
 
+import harry.harrysmod.blocks.CustomBlockDirt;
 import harry.harrysmod.blocks.CustomBlockLeaves;
 import harry.harrysmod.blocks.CustomBlockLog;
 import harry.harrysmod.blocks.CustomBlockPlanks;
 import harry.harrysmod.blocks.CustomBlockSapling;
 import harry.harrysmod.init.BlockInit;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.IChunkGenerator;
-import net.minecraftforge.fml.common.IWorldGenerator;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
-public class CopperTree extends CustomAbstractTree
+public class CopperTree extends WorldGenAbstractTree
 {	
 	private static final IBlockState LOG = BlockInit.log.getDefaultState().withProperty(CustomBlockLog.VARIANT, CustomBlockPlanks.EnumType.COPPER);
 	private static final IBlockState LEAF = BlockInit.leaves.getDefaultState().withProperty(CustomBlockLeaves.VARIANT, CustomBlockPlanks.EnumType.COPPER).withProperty(CustomBlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
+	private static final IBlockState DIRT = BlockInit.dirt.getDefaultState().withProperty(CustomBlockDirt.VARIANT, CustomBlockPlanks.EnumType.COPPER);
 	
 	private final int minHeight;
 	
-	public CopperTree(int minHeight) 
+	public CopperTree() 
 	{
 		super(false);
-		this.minHeight = minHeight;
+		this.minHeight = 12;
+	}
+	
+	@Override
+	protected boolean canGrowInto(Block blockType) 
+	{
+		return blockType == DIRT.getBlock();
 	}
 	
 	@Override

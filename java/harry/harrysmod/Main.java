@@ -1,9 +1,11 @@
 package harry.harrysmod;
 
+import harry.harrysmod.command.DimensionTP;
 import harry.harrysmod.proxy.CommonProxy;
 import harry.harrysmod.tabs.HarryTab;
 import harry.harrysmod.util.Reference;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.world.WorldType;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -11,6 +13,8 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
 public class Main 
@@ -30,6 +34,12 @@ public class Main
 	}
 	
 	@EventHandler
+	public static void serverLoad(FMLServerStartingEvent event)
+	{
+		event.registerServerCommand(new DimensionTP());
+	}
+	
+	@EventHandler
 	public static void init(FMLInitializationEvent event)
 	{
 		proxy.init(event);
@@ -40,4 +50,6 @@ public class Main
 	{
 		proxy.postInit(event);
 	}
+	
+	
 }

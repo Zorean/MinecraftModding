@@ -70,7 +70,7 @@ public class CustomBlockSapling extends BlockBush implements IGrowable,IMetaName
         switch((CustomBlockPlanks.EnumType)state.getValue(VARIANT))
         {
         case COPPER:
-        	worldgenerator = new CopperTree(12);
+        	worldgenerator = new CopperTree();
         	break;
         case ALUMINIUM:
         	break;

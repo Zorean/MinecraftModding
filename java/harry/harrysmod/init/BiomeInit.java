@@ -1,34 +1,33 @@
 package harry.harrysmod.init;
 
+import java.util.logging.Logger;
+
 import harry.harrysmod.util.Reference;
 import harry.harrysmod.world.biome.BiomeCopper;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.BiomeProperties;
-import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.common.BiomeDictionary.Type;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.common.BiomeManager;
-import scala.actors.threadpool.Arrays;
+import net.minecraftforge.common.BiomeManager.BiomeType;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class BiomeInit 
 {
-	public static Biome biome_copper;
+	public static Biome COPPER;
 	
 	public static void init()
 	{
-		biome_copper = new BiomeCopper(new BiomeProperties("Copper"));
+		COPPER = new BiomeCopper();
+		Logger.getLogger(Reference.MODID).config("Biome Initialized");
 	}
 	
 	public static void register()
 	{
-		registerBiome(Reference.copper_id, "Copper", biome_copper, Type.FOREST);
+		registerBiome(COPPER, 100, "copper", BiomeType.COOL);
 	}
 	
-	public static void registerBiome(int ID, String name, Biome biome, Type type)
+	public static void registerBiome(Biome biome, int spawnWeight, String name, BiomeType type)
 	{
 		biome.setRegistryName(name);
 		ForgeRegistries.BIOMES.register(biome);
-		BiomeManager.addSpawnBiome(biome);
-		BiomeDictionary.addTypes(biome, type);
+		BiomeManager.addBiome(type, new BiomeManager.BiomeEntry(biome, spawnWeight));
 	}
 }

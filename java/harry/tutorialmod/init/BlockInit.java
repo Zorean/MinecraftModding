@@ -13,6 +13,8 @@ import harry.tutorialmod.init.blocks.fence.CustomBlockFenceGate;
 import harry.tutorialmod.init.blocks.item.ItemBlockVariants;
 import harry.tutorialmod.init.blocks.slab.CustomBlockDoubleSlab;
 import harry.tutorialmod.init.blocks.slab.CustomBlockHalfSlab;
+import harry.tutorialmod.init.blocks.trees.CustomBlockLeaves;
+import harry.tutorialmod.init.blocks.trees.CustomBlockLog;
 import harry.tutorialmod.init.blocks.trees.CustomBlockPlanks;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -56,6 +58,8 @@ public class BlockInit
 		microwave_idle = new CustomBlockMicrowave("microwave_idle", 2.5F, 4.5F, false);
 		
 		planks = new CustomBlockPlanks("planks");
+		log = new CustomBlockLog("log");
+		leaves = new CustomBlockLeaves("leaves");
 	}
 	
 	public static void register()
@@ -76,6 +80,8 @@ public class BlockInit
 		ForgeRegistries.BLOCKS.register(microwave_active);
 		
 		registerBlockWithVariants(planks, new ItemBlockVariants(planks));
+		registerBlockWithVariants(log, new ItemBlockVariants(log));
+		registerBlockWithVariants(leaves, new ItemBlockVariants(leaves));
 	}
 	
 	public static void registerRenders()
@@ -83,6 +89,8 @@ public class BlockInit
 		for(int i = 0; i < CustomBlockPlanks.EnumType.values().length; i++)
 		{
 			registerRender(planks, i, "planks_" + CustomBlockPlanks.EnumType.values()[i].getName());
+			registerRender(log, i, "log_" + CustomBlockPlanks.EnumType.values()[i].getName());
+			registerRender(leaves, i, "leaves_" + CustomBlockPlanks.EnumType.values()[i].getName());
 		}
 	}
 	

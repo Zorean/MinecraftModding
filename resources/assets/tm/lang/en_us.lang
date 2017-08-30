@@ -34,3 +34,8 @@ tile.microwave_idle.name=Microwave
 
 tile.planks_tutorial.name=Tutorial Planks
 tile.planks_aluminium.name=Aluminium Planks
+tile.log_tutorial.name=Tutorial Log
+tile.log_aluminium.name=Aluminium Log
+tile.leaves_tutorial.name=Tutorial Leaves
+tile.leaves_aluminium.name=Aluminium Leaves
+
